@@ -1,5 +1,9 @@
 # Diva — 3-colouring / SAT solver (research prototype): public benchmark record
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23499372.svg)](https://doi.org/10.5281/zenodo.23499372)
+
+Archived on Zenodo: https://doi.org/10.5281/zenodo.23499372 (release v2026-10-20.1, 20 Oct 2026).
+
 **Source code is not published.** This repository fixes the date and content of the solver by a hash commitment:
 `SOURCE_SHA256.txt` holds the SHA-256 of the complete source archive (`diva_2026-10-20.tgz`, kept privately).
 Anyone can later verify that a released archive matches this commitment.
