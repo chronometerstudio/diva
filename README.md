@@ -14,6 +14,22 @@ What is public here:
 - `mkcnf.py` — graph → DIMACS CNF (3 colours), optional greedy-clique fixing (`fix`);
 - `prereg_2026-10-19.json` / `prereg_2026-10-19_result.txt` — pre-registered predictions of the refutation-cost law on fresh graphs, and the outcomes.
 
+## What Diva is (and is not)
+Diva is a **CDCL SAT solver** (conflict-driven clause learning with restarts, lemma-database management and bounded variable elimination), the same family as Kissat and CaDiCaL — not a local-search or tabu solver.
+Every **N** answer is a complete refutation produced by clause learning: the run ends only when the empty clause is derived (in the 2-core mode, when every cube is refuted). No answer is ever decided by a timeout or a probabilistic criterion; a timeout prints **T**.
+Every **Y** answer is verified against the original formula before it is printed.
+`tabu` is an auxiliary local-search probe used by the (withheld) 2-core dispatcher to order the cubes; it never decides an answer. The engine's own walker (`w` option) only seeds variable phases.
+What is specialised: Diva detects "exactly one" groups and the "different" relation in the CNF and fixes colours on a greedy clique (symmetry breaking). In the comparison table below Kissat is given the same clique fixing in the CNF; without it Kissat is 4–6× slower on the same graphs. Conflict counts are reported alongside times because both solvers are CDCL and the counts are comparable.
+
+## Verify on fresh graphs (no possibility of tuning to the published instances)
+    python3 gengraph.py 600 2.35 <any seed> > fresh.txt
+    python3 mkcnf.py fresh.txt fix > fresh.cnf
+    ./bin/diva-linux-x86_64 1800 gvwuGB < fresh.cnf
+The binary takes an arbitrary DIMACS CNF; nothing in it refers to the files in `graphs/`.
+
+## Scope
+Exact decision of 3-colourability for random graphs at the colourability threshold (c = m/n ≈ 2.35), n = 500–700 — instances on which proof size grows exponentially and general CDCL solvers need minutes to hours. This is not a tool for colouring large industrial graphs far from the threshold (those are easy for greedy heuristics and are not the subject here). Pre-registered laws and timings here are claims about this regime only.
+
 ## Reproduce a single-core run
     python3 mkcnf.py graphs/t_600_0.txt fix > c600s_0.cnf
     ./bin/diva-linux-x86_64 600 gvwuGB < c600s_0.cnf
