@@ -35,7 +35,7 @@ Exact decision of 3-colourability for random graphs at the colourability thresho
 ## Reproduce a single-core run
     python3 mkcnf.py graphs/t_600_0.txt fix > c600s_0.cnf
     ./bin/diva-linux-x86_64 600 gvwuGB < c600s_0.cnf
-    # output: "N <seconds> конфликтов <conflicts> ..."   (N = not 3-colourable, Y = colourable, T = time limit)
+    # output: "N <seconds> конфликтов <conflicts> ..."   (N = not 3-colourable, Y = colourable, T = time limit; "конфликтов" is the Russian word for "conflicts" printed by the binary)
 
 ## Comparison with Kissat 4.0.4 (built from https://github.com/arminbiere/kissat), same CNF with the clique fixed, single core, CPU seconds, 19–20 Oct 2026
 | graph | Diva | Kissat |
