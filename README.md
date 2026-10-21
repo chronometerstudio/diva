@@ -57,3 +57,7 @@ Refutation cost in conflicts, fitted on 162 random graphs n = 150…500 (c = 2.3
     log2 C = 1.16 + n · (0.120 − 0.0204·ρ − 0.0527·t)
 ρ = density (2m/|S|) of the densest subgraph S on 12–32 % of the vertices ("nucleus"), t = triangles inside S per nucleus vertex.
 Pre-registered check on 9 fresh NO graphs (n = 600, 700): mean error −0.3 bits, σ ≈ 1.2.
+
+## Sealed files
+
+`SOURCE_SHA256.txt`, `PREREG_SHA256.txt` and `PRIORITY_SHA256.txt` hold SHA-256 hashes of files kept by the author: the solver source, the pre-registered predictions of ongoing experiment series, and a sealed research note (Zenodo, embargoed: https://doi.org/10.5281/zenodo.23539231). The hashes let any later release of those files be checked against the dates of the commits here.
