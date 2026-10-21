@@ -14,6 +14,8 @@ What is public here:
 - `mkcnf.py` — graph → DIMACS CNF (3 colours), optional greedy-clique fixing (`fix`);
 - `prereg_2026-10-19.json` / `prereg_2026-10-19_result.txt` — pre-registered predictions of the refutation-cost law on fresh graphs, and the outcomes.
 
+See also [HYPOTHESIS.md](HYPOTHESIS.md) — the brittleness hypothesis as a research programme (in Russian): three testable claims and the verification plan.
+
 ## What Diva is (and is not)
 Diva is a **CDCL SAT solver** (conflict-driven clause learning with restarts, lemma-database management and bounded variable elimination), the same family as Kissat and CaDiCaL — not a local-search or tabu solver.
 Every **N** answer is a complete refutation produced by clause learning: the run ends only when the empty clause is derived (in the 2-core mode, when every cube is refuted). No answer is ever decided by a timeout or a probabilistic criterion; a timeout prints **T**.
