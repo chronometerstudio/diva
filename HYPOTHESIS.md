@@ -1,65 +1,65 @@
-# Гипотеза спектра ключей: исследовательская программа
+# The Key-Spectrum Hypothesis: a research programme
 
-Автор идеи: Я. Деев (Chronometer Studio). Редакция 2: 21.10.2026 (редакция 1 называлась «гипотеза хрупкости»; хрупкость здесь — следствие, не основание).
-Статус: рабочая гипотеза с планом проверки и первыми измерениями. Не является доказательством P ≠ NP и не претендует на него (см. §5).
+Idea: Y. Deev (Chronometer Studio). Revision 2, 21 October 2026 (revision 1 was called "the brittleness hypothesis"; brittleness is treated here as a consequence, not a foundation).
+Status: a working hypothesis with a verification plan and first measurements. It is not a proof of P ≠ NP and makes no claim to be one (see §5).
 
-## 1. Исходная интуиция (в формулировках автора)
+## 1. The original intuition (in the author's formulation)
 
-1. NP-полных задач бесконечно много; список Карпа (1972) — начало перечисления. Изменение параметра задачи (число цветов, арность дизъюнкта, плотность чисел) даёт новую задачу, иногда по другую сторону границы P/NP.
-2. **Ключи.** У каждой задачи есть ряд ускорителей — «ключей» — с убывающими вкладами: условно 50 %, 30 %, 10 %, 5 %, 2.5 %… Ключи применимы ко всем задачам, но на чужой задаче их вес исчезающе мал; измеримы только сильнейшие.
-3. Ряд сходится: никакой конечный набор ключей не даёт 100 %. Полиномиальный алгоритм — конечный набор ключей.
-4. **Лезвие.** У ключа есть цена. Ключ с весом ниже порога — чистый расход времени: «на малых задачах 50 % — минус время, 40 % — уже плюс». Доработка метода под «сестру» ухудшает его на родителе.
-5. **Сёстры.** Мутируя задачу минимально (сестра), меряем вес одного и того же метода. Числовые задачи (Subset Sum, Partition) дают непрерывную цепочку сестёр: плотность чисел меняется на бит.
+1. There are infinitely many NP-complete problems; Karp's list (1972) is the beginning of an enumeration. Changing a problem's parameter (number of colours, clause width, density of numbers) yields a new problem, sometimes on the other side of the P/NP boundary.
+2. **Keys.** Every problem has a series of accelerators — "keys" — with decreasing contributions: roughly 50 %, 30 %, 10 %, 5 %, 2.5 %… Keys apply to every problem, but on a foreign problem their weight is vanishingly small; only the strongest are measurable.
+3. The series converges: no finite set of keys gives 100 %. A polynomial algorithm is a finite set of keys.
+4. **The razor's edge.** A key has a cost. A key whose weight is below a threshold is a net loss of time: "on small instances 50 % saves time, 40 % already costs it". Tuning a method for a "sister" problem makes it worse on the parent.
+5. **Sisters.** Mutate a problem minimally (a sister) and measure the weight of the same method. Numeric problems (Subset Sum, Partition) give a continuous chain of sisters: the density of the numbers changes by one bit.
 
-## 2. Количественная форма
+## 2. Quantitative form
 
-Для семейства входов F с размером n и фиксированного метода M: log₂ C(n) = a + s·n, где C — цена (конфликты или время), s — **показатель** (бит на вершину/переменную), a — **множитель**.
-Вес ключа k при фиксированном n: w_k = log₂(C без k / C с k) бит. Цена ключа c_k — накладные расходы в тех же единицах; чистый вес w_k − c_k.
+For a family of inputs F with size n and a fixed method M: log₂ C(n) = a + s·n, where C is the cost (conflicts or time), s is the **exponent** (bits per vertex/variable) and a is the **multiplier**.
+The weight of a key k at fixed n is w_k = log₂(C without k / C with k) bits. The cost of a key, c_k, is its overhead in the same units; the net weight is w_k − c_k.
 
-**Гипотеза спектра ключей.** Для NP-полного семейства у порога сумма весов всех ключей Σ_k w_k = O(1) бит (ограничена константой, не зависящей от n), тогда как s·n = Θ(n). Иначе говоря, ключи меняют множитель a и не трогают показатель s. Для семейства из P один ключ имеет вес s·n (показатель становится нулём) — и это известно по теореме, а не по измерению.
+**Key-spectrum hypothesis.** For an NP-complete family at its threshold, the sum of the weights of all keys Σ_k w_k = O(1) bits (bounded by a constant independent of n), whereas s·n = Θ(n). In other words, keys change the multiplier a and leave the exponent s untouched. For a family in P, a single key has weight s·n (the exponent becomes zero) — and this is known by theorem, not by measurement.
 
-Хрупкость — следствие: w_k зависит от семейства и падает при мутации входа; Σ w_k остаётся O(1). Лезвие — вторая часть: при падении w_k ниже c_k ключ меняет знак.
+Brittleness is a consequence: w_k depends on the family and falls under mutation of the input; Σ w_k stays O(1). The razor's edge is the second part: when w_k falls below c_k, the key changes sign.
 
-## 3. Что установлено (Diva, 19–21.10.2026)
+## 3. What has been established (Diva, 19–21 October 2026)
 
-- **Закон цены опровержения** для случайной 3-раскраски у порога (162 графа, n = 150…500; предрегистрация на 600–700): log₂ C = 1.16 + n·(0.120 − 0.0204·ρ − 0.0527·t), ρ — плотность зерна, t — треугольники внутри зерна. Остаток σ ≈ 1.2 бита. Обобщается на 4-раскраску.
-- **Сумма ключей — константа.** Все ключи движка вместе (память лемм, перезапуски, BVE, наследование, приоры) ≤ ×1.6, т. е. ≤ 0.7 бита; ключ клики (закрепление цветов клики) ×4.7 ≈ 2.2 бита; Kissat без этого ключа в 4–6 раз медленнее. Против показателя 0.031·n ≈ 15 бит при n = 500. Ряд «50 + 30 + 10 + …» в битах ≈ 1 + 0.5 + 0.15 + … ≈ 2 бита — совпадает с измеренным множителем.
-- **Показатель задаётся семейством, не солвером.** Серия сестёр 1 (бит/вершина): случайный граф c = 2.35 — 0.031; c = 3.0 — 0.009; треугольная решётка с перемонтажом 60 % / 100 % рёбер — 0.013 / 0.012; 6-регулярный — 0.045 у Diva и 0.047 у Kissat. Разные солверы — один показатель.
-- **Вес ключа падает при мутации.** Ключ клики: ×4.7–5 постоянно на случайных графах; на регулярных ×6.0 → 4.2 → 3.6 с ростом n. Закон зерна на регулярных графах не работает (зерна нет).
-- **Лезвие наблюдается.** BVE: ×1.3–1.6 на всех NO-графах n = 500–700; на YES меняет знак между соседними сидами (c500_2: сид 0 — 0.81 с без / 12.31 с с BVE; сид 4 — 16.88 / 4.02). Наследование лемм разогрева: −15 % на одном графе, +5 % на другом.
-- **Порог чувствительности.** При σ ≈ 1.2 бита и n_max = 700 показатель заметен на уровне 2σ, только если s > 2σ/n_max ≈ 0.0035 бит/вершина. Ниже этого «100 %» и «99.x %» измерением неразличимы. Все наши измеренные показатели лежат в 3–10 раз выше порога; утверждения «ключ меняет только множитель» действительны с этой оговоркой.
+- **Refutation-cost law** for random 3-colouring at the threshold (162 graphs, n = 150…500; pre-registered at 600–700): log₂ C = 1.16 + n·(0.120 − 0.0204·ρ − 0.0527·t), where ρ is the nucleus density and t the triangle count inside the nucleus. Residual σ ≈ 1.2 bits. Generalises to 4-colouring.
+- **The sum of keys is a constant.** All engine keys together (lemma memory, restarts, BVE, inheritance, priors) ≤ ×1.6, i.e. ≤ 0.7 bits; the clique key (fixing the colours of a clique) ×4.7 ≈ 2.2 bits; Kissat without this key is 4–6 times slower. Against an exponent of 0.031·n ≈ 15 bits at n = 500. The series "50 + 30 + 10 + …" in bits is ≈ 1 + 0.5 + 0.15 + … ≈ 2 bits — it matches the measured multiplier.
+- **The exponent is set by the family, not the solver.** Sister series 1 (bits/vertex): random graph c = 2.35 — 0.031; c = 3.0 — 0.009; triangular lattice with 60 % / 100 % of edges rewired — 0.013 / 0.012; 6-regular — 0.045 for Diva and 0.047 for Kissat. Different solvers, one exponent.
+- **A key's weight falls under mutation.** Clique key: ×4.7–5, constant on random graphs; on regular graphs ×6.0 → 4.2 → 3.6 as n grows. The nucleus law does not work on regular graphs (there is no nucleus).
+- **The razor's edge is observed.** BVE: ×1.3–1.6 on all NO graphs at n = 500–700; on YES graphs it changes sign between neighbouring seeds (c500_2: seed 0 — 0.81 s without / 12.31 s with BVE; seed 4 — 16.88 / 4.02). Inheritance of warm-up lemmas: −15 % on one graph, +5 % on another.
+- **Sensitivity threshold.** With σ ≈ 1.2 bits and n_max = 700, an exponent is detectable at the 2σ level only if s > 2σ/n_max ≈ 0.0035 bits/vertex. Below that, "100 %" and "99.x %" are indistinguishable by measurement. All exponents measured so far lie 3–10 times above the threshold; statements of the form "a key changes only the multiplier" hold with this caveat.
 
-## 4. Четыре проверяемых утверждения
+## 4. Four testable claims
 
-**H-A. Инвариант затухания.** Относительная потеря веса фиксированного ключа вдоль ряда сестёр описывается одной кривой в разных доменах (графы, формулы, числа). Сильная форма (одни и те же константы) скорее всего ложна: критические индексы окна перехода у 2-SAT (ν = 3, Bollobás и др. 2001) и 3-SAT (≈ 1.5, Kirkpatrick, Selman 1994) различны. Проверяемая слабая форма: одна функциональная форма с константами, зависящими от семейства. Фальсифицируется, если формы различны.
+**H-A. Decay invariant.** The relative loss of weight of a fixed key along a chain of sisters is described by one curve across domains (graphs, formulas, numbers). The strong form (identical constants) is most likely false: the critical exponents of the transition window differ between 2-SAT (ν = 3, Bollobás et al. 2001) and 3-SAT (≈ 1.5, Kirkpatrick, Selman 1994). The testable weak form: one functional form with family-dependent constants. Falsified if the forms differ.
 
-**H-B. Разделение шкал.** Мутации входа делятся на два типа: меняющие показатель s (смена класса: плотность, регулярность, порог) и меняющие множитель a (всё, на чём живут ключи). Фальсифицируется, если найдётся ключ, меняющий показатель на фиксированном семействе выше порога чувствительности §3.
+**H-B. Separation of scales.** Mutations of the input split into two types: those that change the exponent s (change of class: density, regularity, threshold) and those that change the multiplier a (everything the keys live on). Falsified if a key is found that changes the exponent on a fixed family above the sensitivity threshold of §3.
 
-**H-C. Теорема для фиксированной системы доказательств.** Для резолюции (и CDCL как её фрагмента) на семействе сестёр никакое добавление полиномиального числа лемм-ключей не меняет показатель. Техника известна: ширина резолюции (Ben-Sasson, Wigderson 2001); нижние оценки для случайной раскраски — Beame, Culberson, Mitchell, Moore (2005). Формулы с глобальной чётностью (Цейтин) — уже доказанный случай: Urquhart (1987). Наши измерения показателя говорят, какую константу доказывать.
+**H-C. A theorem for a fixed proof system.** For resolution (and CDCL as a fragment of it), on a family of sisters no addition of polynomially many "key lemmas" changes the exponent. The technique is known: resolution width (Ben-Sasson, Wigderson 2001); lower bounds for random colouring — Beame, Culberson, Mitchell, Moore (2005). Formulas with global parity (Tseitin) are an already proven case: Urquhart (1987). Our measured exponents say which constant to prove.
 
-**H-D. Лезвие (цена ключа).** Для каждого ключа есть сестра, на которой его чистый вес w_k − c_k отрицателен; при переходе родитель → сестра знак меняется, а не плавно убывает. Фальсифицируется ключом, чистый вес которого положителен на всём ряде сестёр при всех n. Ближайший предшественник: отсутствие бесплатного обеда (Wolpert, Macready 1997) — в среднем по всем задачам все методы равны; H-D — его версия внутри одного семейства с измеримым порогом.
+**H-D. The razor's edge (cost of a key).** For every key there is a sister on which its net weight w_k − c_k is negative; at the transition parent → sister the sign flips rather than decaying smoothly. Falsified by a key whose net weight is positive on the whole chain of sisters at all n. Closest predecessor: no free lunch (Wolpert, Macready 1997) — averaged over all problems all methods are equal; H-D is its version inside one family with a measurable threshold.
 
-## 5. Почему это не доказательство P ≠ NP — и границы программы
+## 5. Why this is not a proof of P ≠ NP — and the limits of the programme
 
-- **Круг.** Модель говорит «никогда 100 %». Но внутри P ключ на 100 % существует по теореме: 2-SAT (Aspvall, Plass, Tarjan 1979), Horn-SAT (Dowling, Gallier 1984), XOR-SAT (исключение Гаусса). Чем ключ-100 % отличается от ключа-50 % — это и есть вопрос P vs NP; модель его не решает, а переформулирует.
-- **Измерение.** Эксперимент не отличает 100 % от 99.x % (порог §3) и «ключа нет» от «ключ не найден». Поэтому P-ключи известны по теоремам, а для NP-полных задач ответ может дать только теорема о невозможности — H-C, не H-A/H-B.
-- **Шкала.** Хрупкость — потеря множителя; P ≠ NP — утверждение о показателе.
-- **Квантор.** «Все известные ключи — O(1) бит» не переносится на все полиномиальные алгоритмы.
-- **Барьер.** Рассуждение только о входах, без устройства вычислителя, релятивизируется (Baker, Gill, Solovay 1975).
+- **Circularity.** The model says "never 100 %". But inside P a 100 % key exists by theorem: 2-SAT (Aspvall, Plass, Tarjan 1979), Horn-SAT (Dowling, Gallier 1984), XOR-SAT (Gaussian elimination). What distinguishes a 100 % key from a 50 % key is the P vs NP question itself; the model does not resolve it, it restates it.
+- **Measurement.** Experiment cannot distinguish 100 % from 99.x % (threshold of §3), nor "no key exists" from "no key found". P-keys are known by theorem; for NP-complete problems only an impossibility theorem can answer — H-C, not H-A/H-B.
+- **Scale.** Brittleness is a loss in the multiplier; P ≠ NP is a statement about the exponent.
+- **Quantifier.** "All known keys are O(1) bits" does not transfer to all polynomial algorithms.
+- **Barrier.** An argument only about inputs, without the structure of the computing device, relativises (Baker, Gill, Solovay 1975).
 
-Цель программы — эмпирические законы H-A, H-B, H-D и теорема H-C.
+The aim of the programme is the empirical laws H-A, H-B, H-D and the theorem H-C.
 
-## 6. План проверки
+## 6. Verification plan
 
-1. ✔ Серия сестёр 1 для 3-раскраски (случайный → регулярный → решётка с шумом → плантированный): показатель по семействам, вес ключа клики по n. Сделано 21.10.2026, результаты в §3.
-2. **2+p-SAT как калибровка** (Monasson и др. 1999): непрерывная цепочка сестёр между 2-SAT и 3-SAT с известным ответом — переход из полинома в экспоненту при p ≈ 0.41. Если наш протокол не воспроизводит известный излом, протокол негоден.
-3. **Subset Sum по плотности** (LLL, динамика, ветвление): плотность 0.5…1.2; известный переход около 0.94 (Lagarias, Odlyzko 1985; Coster и др. 1992).
-4. **Случайный 3-SAT по плотности** (порог 4.27): тот же протокол; известный излом DPLL при плотности ≈ 3.9 (Cocco, Monasson 2001).
-5. **H-D напрямую:** BVE и наследование лемм на YES/NO по n — найти n и сестру, где знак меняется.
-6. Для каждого семейства: предрегистрация до прогонов; в каждом отчёте — порог чувствительности 2σ/n_max; веса ключей на решётках мерить по времени, а не по конфликтам.
+1. ✔ Sister series 1 for 3-colouring (random → regular → lattice with noise → planted): exponent per family, weight of the clique key by n. Done 21 October 2026; results in §3.
+2. **2+p-SAT as calibration** (Monasson et al. 1999): a continuous chain of sisters between 2-SAT and 3-SAT with a known answer — the transition from polynomial to exponential at p ≈ 0.41. If our protocol does not reproduce the known kink, the protocol is unfit.
+3. **Subset Sum by density** (LLL, dynamic programming, branching): density 0.5…1.2; known transition near 0.94 (Lagarias, Odlyzko 1985; Coster et al. 1992).
+4. **Random 3-SAT by density** (threshold 4.27): same protocol; known DPLL kink at density ≈ 3.9 (Cocco, Monasson 2001).
+5. **H-D directly:** BVE and lemma inheritance on YES/NO by n — find the n and the sister at which the sign changes.
+6. For every family: pre-registration before the runs; every report states the sensitivity threshold 2σ/n_max; key weights on lattices measured in time, not conflicts.
 
-## 7. Предшественники (обязательная часть каждого утверждения)
+## 7. Predecessors (a mandatory part of every claim)
 
-Сводимость и списки задач: Cook (1971), Karp (1972), Garey, Johnson (1979). Фазовые переходы и трудность: Cheeseman, Kanefsky, Taylor (1991); Mitchell, Selman, Levesque (1992); Kirkpatrick, Selman (1994); Bollobás, Borgs, Chayes, Kim, Wilson (2001). Непрерывные семейства сестёр: Monasson, Zecchina, Kirkpatrick, Selman, Troyansky (1999); Achlioptas, Kirousis, Kranakis, Krizanc (2001); Cocco, Monasson (2001). Задачно-специфичность ключей: Rice (1976); Wolpert, Macready (1997); Xu, Hutter, Hoos, Leyton-Brown (2008); Leyton-Brown, Nudelman, Shoham (2009). Плотность Subset Sum: Lagarias, Odlyzko (1985); Coster и др. (1992). Нижние оценки резолюции: Haken (1985); Urquhart (1987); Chvátal, Szemerédi (1988); Ben-Sasson, Wigderson (2001); Beame, Culberson, Mitchell, Moore (2005). Ключи на 100 % внутри P: Aspvall, Plass, Tarjan (1979); Dowling, Gallier (1984). Барьеры: Baker, Gill, Solovay (1975); Razborov, Rudich (1997); Aaronson, Wigderson (2008). Гипотеза экспоненциального времени: Impagliazzo, Paturi (2001).
+Reductions and problem lists: Cook (1971), Karp (1972), Garey, Johnson (1979). Phase transitions and hardness: Cheeseman, Kanefsky, Taylor (1991); Mitchell, Selman, Levesque (1992); Kirkpatrick, Selman (1994); Bollobás, Borgs, Chayes, Kim, Wilson (2001). Continuous families of sisters: Monasson, Zecchina, Kirkpatrick, Selman, Troyansky (1999); Achlioptas, Kirousis, Kranakis, Krizanc (2001); Cocco, Monasson (2001). Problem-specificity of keys: Rice (1976); Wolpert, Macready (1997); Xu, Hutter, Hoos, Leyton-Brown (2008); Leyton-Brown, Nudelman, Shoham (2009). Subset Sum density: Lagarias, Odlyzko (1985); Coster et al. (1992). Resolution lower bounds: Haken (1985); Urquhart (1987); Chvátal, Szemerédi (1988); Ben-Sasson, Wigderson (2001); Beame, Culberson, Mitchell, Moore (2005). 100 % keys inside P: Aspvall, Plass, Tarjan (1979); Dowling, Gallier (1984). Barriers: Baker, Gill, Solovay (1975); Razborov, Rudich (1997); Aaronson, Wigderson (2008). Exponential time hypothesis: Impagliazzo, Paturi (2001).
 
-Что здесь не сводится к предшественникам и предсказывает число: (а) сумма весов всех ключей фиксированного CDCL-движка на случайной 3-раскраске у порога — константа ≈ 2–3 бита при показателе 0.031·n; (б) показатель один и тот же у разных солверов на одном семействе (0.045 vs 0.047); (в) порог чувствительности как обязательная часть любого утверждения «меняет только множитель».
+What here does not reduce to predecessors and predicts a number: (a) the sum of the weights of all keys of a fixed CDCL engine on random 3-colouring at the threshold is a constant ≈ 2–3 bits against an exponent of 0.031·n; (b) the exponent is the same for different solvers on one family (0.045 vs 0.047); (c) the sensitivity threshold as a mandatory part of any claim of the form "changes only the multiplier".
