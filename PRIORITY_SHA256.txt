@@ -1,1 +1,2 @@
 96f59654d8b476f8537dce78b2dc6d8c4aabf96d22e4323ca1411526dcb5af7b  PRIORITY_NOTE_2026-10-21.md  (priority note on the witness-edge law, sealed 2026-10-21 CEST; file held by the author; supersedes the hash committed in 79d60c3)
+Zenodo record (embargoed until 2027-10-21): https://doi.org/10.5281/zenodo.23539231 (concept DOI 10.5281/zenodo.23539230), published 2026-10-21
