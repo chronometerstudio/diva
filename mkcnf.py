@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# граф (файл "n m" + рёбра) -> CNF 3-раскраски; опционально закрепление жадной клики (как в diva_par)
+# graph (file "n m" + edge list) -> 3-colouring CNF; optionally fixes the colours of a greedy clique (as in diva_par)
 import sys
 sys.argv.append('') if len(sys.argv)<3 else None
 t=open(sys.argv[1]).read().split(); n,m=int(t[0]),int(t[1]); E=[(int(t[2+2*i]),int(t[3+2*i])) for i in range(m)]
