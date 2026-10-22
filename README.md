@@ -60,4 +60,4 @@ Pre-registered check on 9 fresh NO graphs (n = 600, 700): mean error −0.3 bits
 
 ## Sealed files
 
-`SOURCE_SHA256.txt`, `PREREG_SHA256.txt` and `PRIORITY_SHA256.txt` hold SHA-256 hashes of files kept by the author: the solver source, the pre-registered predictions of ongoing experiment series, and the research note on the witness-edge law (v0.1 sealed and embargoed on 2026-10-21; v0.2 published 2026-10-22 under the concept DOI https://doi.org/10.5281/zenodo.23539230, which resolves to the latest version). The hashes let any later release of those files be checked against the dates of the commits here.
+`SOURCE_SHA256.txt`, `PREREG_SHA256.txt` and `PRIORITY_SHA256.txt` hold SHA-256 hashes of files kept by the author: the solver source, the pre-registered predictions of ongoing experiment series, and the research note on the witness-edge law (v0.1 sealed and embargoed on 2026-10-21; v0.2 published 2026-10-22: https://doi.org/10.5281/zenodo.23550288; the concept DOI https://doi.org/10.5281/zenodo.23539230 resolves to the latest version). The hashes let any later release of those files be checked against the dates of the commits here.
