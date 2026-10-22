@@ -1,2 +1,4 @@
 8dfd1ecaf329608977aa1894d3265ce9b1f2aa6ca11b1242d19926b5953319b8  prereg_series2_2026-10-21.json
 dc49be72a94fa646eef0075418f82dece3c4894441bc8c10e66ff5fdc1284693  prereg_series3_2026-10-21.json
+87523229a07342e405310a57c619773e028191906324d93896cacadefa6d5262  prereg_ladder_2026-10-22.md  (forward test n = 800/900/1000 at the 3-colouring threshold: predicted log2 C = 24.0 / 26.8 / 29.7 ± 3.6, cube law, sealed 2026-10-22 12:05 CEST before the first run; file held by the author)
+505b522be62609a15237bdfeb4a0d42dc14a6c158569074f861e31e2f086fa69  ladder/manifest.json  (seeds, cliques, cube vertices and SHA-256 of the 12 whole-graph CNFs of the ladder)
