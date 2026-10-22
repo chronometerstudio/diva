@@ -1,2 +1,4 @@
 96f59654d8b476f8537dce78b2dc6d8c4aabf96d22e4323ca1411526dcb5af7b  PRIORITY_NOTE_2026-10-21.md  (priority note on the witness-edge law, sealed 2026-10-21 CEST; file held by the author; supersedes an earlier hash committed the same day)
 Zenodo record (embargoed until 2027-10-21): https://doi.org/10.5281/zenodo.23539231 (concept DOI 10.5281/zenodo.23539230), published 2026-10-21
+028fb51864dd183bd278c221584eeeca91c5f92885da6fef66980f43a34fbb9b  Deev_2026_skeleton_law_v0.2.md   (research note v0.2, "The skeleton of a hard instance: a witness-edge law and the localisation of refutation cost in random constraint problems", 2026-10-22 CEST; supersedes the v0.1 priority note; published on Zenodo under concept DOI 10.5281/zenodo.23539230)
+a1ecfde689e1b0d637be154b735b9227ec070aead0347b54146b060dbcb25fa9  Deev_2026_skeleton_law_v0.2.pdf  (same note, PDF as uploaded to Zenodo)
