@@ -4,6 +4,8 @@
 
 Archived on Zenodo: https://doi.org/10.5281/zenodo.23499372 (release v2026-10-20.1, 20 Oct 2026).
 
+**Research note (22 Oct 2026):** *The skeleton of a hard instance: a witness-edge law and the localisation of refutation cost in random constraint problems* — https://doi.org/10.5281/zenodo.23539230 (concept DOI; resolves to the latest version). The refutation cost of a random graph at the colourability threshold is set by its deletion-minimal non-colourable subgraph: log₂ C = a + κ·|E(W)|, κ = 0.020 ± 0.001 bits per skeleton edge for 3, 4 and 5 colours and for two solvers (Diva, Kissat 4.0.4); the same form holds for random 3-SAT, independent set and Subset Sum. The SHA-256 of the published files is in `PRIORITY_SHA256.txt`.
+
 **Source code is not published.** This repository fixes the date and content of the solver by a hash commitment:
 `SOURCE_SHA256.txt` holds the SHA-256 of the complete source archive (`diva_2026-10-20.tgz`, kept privately).
 Anyone can later verify that a released archive matches this commitment.
