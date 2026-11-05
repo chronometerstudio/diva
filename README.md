@@ -4,7 +4,7 @@
 
 Archived on Zenodo: https://doi.org/10.5281/zenodo.23499372 (release v2026-10-20.1, 20 Oct 2026).
 
-**Research note (22 Oct 2026):** *The skeleton of a hard instance: a witness-edge law and the localisation of refutation cost in random constraint problems* — https://doi.org/10.5281/zenodo.23539230 (concept DOI; resolves to the latest version). The refutation cost of a random graph at the colourability threshold is set by its deletion-minimal non-colourable subgraph: log₂ C = a + κ·|E(W)|, κ = 0.020 ± 0.001 bits per skeleton edge for 3, 4 and 5 colours and for two solvers (Diva, Kissat 4.0.4); the same form holds for random 3-SAT, independent set and Subset Sum. The SHA-256 of the published files is in `PRIORITY_SHA256.txt`.
+**Research note, version 0.3 (5 Nov 2026):** *The skeleton of a hard instance: explicit lower-bound constants for DPLL on random graphs and formulas, and measurements of CDCL on minimal non-colourable subgraphs* — https://doi.org/10.5281/zenodo.23988536 (all versions: https://doi.org/10.5281/zenodo.23539230, which resolves to the latest). It separates what is proved (explicit lower-bound constants for a DPLL colouring procedure on random regular graphs; a complete proof of a theorem stated by Monasson (2005) for random 3-SAT; the typical path of the colouring procedure on random and gauge-randomised graphs) from what is measured (CDCL against that typical path, with preregistered predictions). It corrects version 0.2: the value κ = 0.020 bits per skeleton edge is not an asymptotic constant, and the statement that clause learning leaves the exponent within 10 % is withdrawn. The SHA-256 of the published files is in `PRIORITY_SHA256.txt`.
 
 **Source code is not published.** This repository fixes the date and content of the solver by a hash commitment:
 `SOURCE_SHA256.txt` holds the SHA-256 of the complete source archive (`diva_2026-10-20.tgz`, kept privately).
@@ -37,7 +37,7 @@ Exact decision of 3-colourability for random graphs at the colourability thresho
 ## Reproduce a single-core run
     python3 mkcnf.py graphs/t_600_0.txt fix > c600s_0.cnf
     ./bin/diva-linux-x86_64 600 gvwuGB < c600s_0.cnf
-    # output: "N <seconds> конфликтов <conflicts> ..."   (N = not 3-colourable, Y = colourable, T = time limit; "конфликтов" is the Russian word for "conflicts" printed by the binary)
+    # output: "N <seconds> <label> <conflicts> ..."   (N = not 3-colourable, Y = colourable, T = time limit; <label> is a fixed word that the binary prints before the number of conflicts)
 
 ## Comparison with Kissat 4.0.4 (built from https://github.com/arminbiere/kissat), same CNF with the clique fixed, single core, CPU seconds, 19–20 Oct 2026
 | graph | Diva | Kissat |
@@ -62,4 +62,4 @@ Pre-registered check on 9 fresh NO graphs (n = 600, 700): mean error −0.3 bits
 
 ## Sealed files
 
-`SOURCE_SHA256.txt`, `PREREG_SHA256.txt` and `PRIORITY_SHA256.txt` hold SHA-256 hashes of files kept by the author: the solver source, the pre-registered predictions of ongoing experiment series, and the research note on the witness-edge law (v0.1 sealed and embargoed on 2026-10-21; v0.2 published 2026-10-22: https://doi.org/10.5281/zenodo.23550288; the concept DOI https://doi.org/10.5281/zenodo.23539230 resolves to the latest version). The hashes let any later release of those files be checked against the dates of the commits here.
+`SOURCE_SHA256.txt`, `PREREG_SHA256.txt` and `PRIORITY_SHA256.txt` hold SHA-256 hashes of files kept by the author: the solver source, the pre-registered predictions of ongoing experiment series, and the research note on the witness-edge law (v0.1 sealed on 2026-10-21 under embargo, opened on 2026-11-05: https://doi.org/10.5281/zenodo.23539231; v0.2 published 2026-10-22: https://doi.org/10.5281/zenodo.23550288; v0.3 published 2026-11-05: https://doi.org/10.5281/zenodo.23988536; the concept DOI https://doi.org/10.5281/zenodo.23539230 resolves to the latest version). The hashes let any later release of those files be checked against the dates of the commits here.
